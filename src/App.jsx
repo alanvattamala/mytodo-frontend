@@ -9,7 +9,7 @@ export default function App() {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const res = await fetch("http://localhost:3000/tasks");
+        const res = await fetch("https://mytodo-backend.onrender.com/tasks");
         if (!res.ok) throw new Error("Failed to fetch tasks");
         const data = await res.json();
         setTasks(data);
@@ -22,7 +22,7 @@ export default function App() {
 
   // ✅ Add task
   const addTask = async (text) => {
-    const res = await fetch("http://localhost:3000/tasks", {
+    const res = await fetch("https://mytodo-backend.onrender.com/tasks", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text }),
@@ -34,7 +34,7 @@ export default function App() {
   // ✅ Toggle task completion
   const toggleTask = async (id, completed) => {
     try {
-      const res = await fetch(`http://localhost:3000/tasks/${id}`, {
+      const res = await fetch(`https://mytodo-backend.onrender.com/tasks/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ completed: !completed }), // Toggle completed
@@ -56,7 +56,7 @@ export default function App() {
 
   // ✅ Edit task
   const editTask = async (id, text) => {
-    const res = await fetch(`http://localhost:3000/tasks/${id}`, {
+    const res = await fetch(`https://mytodo-backend.onrender.com/tasks/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text }),
@@ -67,7 +67,7 @@ export default function App() {
 
   // ✅ Delete task
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:3000/tasks/${id}`, { method: "DELETE" });
+    await fetch(`https://mytodo-backend.onrender.com/tasks/${id}`, { method: "DELETE" });
     setTasks(tasks.filter((task) => task._id !== id));
   };
 
